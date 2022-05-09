@@ -5,6 +5,7 @@ import cv2
 import base64
 from detection import predict
 from segmentation import segment
+from flask import jsonify
 
 app = Flask(__name__)
 
@@ -23,15 +24,18 @@ def test():
   #   out.write(bytes_of_image)
   # return "Image read"
   image = cv2.imdecode(nparr, cv2.IMREAD_COLOR)
-
   detections = segment(image)
+  detections.sort(key=lambda det: (det.bbox.y, det.bbox.x))
+  
+
   image2 = image.copy()
+  detected_text = ''
   for i, det in enumerate(detections):
     roi = det.img
 
     x, y, w, h = det.bbox.x, det.bbox.y, det.bbox.w, det.bbox.h
     rec, prob = predict(roi)
-
+    detected_text += ' ' + rec
     # show ROI
     # cv2.imshow(f'{rec}, {prob}',roi)
     cv2.rectangle(image,(x,y),( x + w, y + h ),(90,0,255),2)
@@ -43,18 +47,23 @@ def test():
 
 
   #return send_file(img, mimetype='image/gif')
-  image2 =  cv2.cvtColor(image2, cv2.COLOR_BGR2GRAY)
+  # image2 =  cv2.cvtColor(image2, cv2.COLOR_BGR2GRAY)
   retval, buffer = cv2.imencode('.jpg', image2)
   data = buffer.tobytes()
-  with open('./server/out.jpg', 'wb') as out_file:
-    out_file.write(data)
+  # print(type(base64.b64encode(data)))
+  return jsonify({
+    'image_base64': base64.b64encode(data).decode("ascii"),
+    'detected_text': detected_text
+  })
+
   # print(data)
   # return send_file('/out.jpg', mimetype='image/jpg')
-  response = make_response(data)
-  response.headers.set('Content-Type', 'image/jpeg')
-  # response.headers.set(
-  #   'Content-Disposition', 'attachment', filename='test.jpg')
-  return base64.b64encode(data)
+
+  # response = make_response(data)
+  # response.headers.set('Content-Type', 'image/jpeg')
+  # # response.headers.set(
+  # #   'Content-Disposition', 'attachment', filename='test.jpg')
+  # return base64.b64encode(data)
 
 @app.route('/api/test2', methods=['POST'])
 def test2():
