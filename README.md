@@ -1,4 +1,31 @@
-## Instructions
+# HANDWRITING RECOGNITION
+
+This app uses Neural Networks to detect and recognize handwritten text in given images.
+<div>
+<img src="doc-images/input_example.png"
+     alt="input image example"
+     style=" width: 47%; margin-right: 6%;" />
+<img src="doc-images/output_example.jpg"
+     alt="output image example"
+     style="float: right; width: 47%" />
+
+</div>
+
+## Installation Instructions
+---
+### Prerequisite
+1. Python3
+2. Node.js and npm
+  * Ubuntu:
+    ```
+    sudo apt install nodejs npm
+    ``` 
+  * MacOs: install homebrew first
+    ```
+    /usr/bin/ruby -e "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/master/install)" 
+    brew install node npm
+    ```
+3. For Mac on Apple silicon, install tensorflow using [this guide](https://caffeinedev.medium.com/how-to-install-tensorflow-on-m1-mac-8e9b91d93706)
 ### Inint virtual env and install python requirements
 ```
 source venv/bin/activate
@@ -15,3 +42,17 @@ cd client
 expo start
 cd ..
 ```
+<br>
+## App flow
+---
+<div>
+<img src="doc-images/flowchart.png"
+     alt="output image example"
+     />
+</div>
+
+The user will upload an image with handwritten text to the mobile app, the image will be sent to a remote server. There, the image will be passed through a segmentation function that will extract the lines into separate small images, which then will be passed one-by-one through an RNN that will recognize the text in the image and will output a string. The original image will be processed by adding the readable text and will be sent back to the client-side together with the separate string of text.
+
+<br>
+## Server-side
+---
