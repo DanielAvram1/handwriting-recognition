@@ -56,3 +56,36 @@ The user will upload an image with handwritten text to the mobile app, the image
 <br>
 ## Server-side
 ---
+On server-side, there are 2 main steps for text extraction: Text Segmentation and Text Recognition.
+
+### Text Segmentation
+For text segmentation (aka detection of bounding boxes of individual lines and their extraction) I tried only one method so far: gaussian blur + finding contours. Another method would be to use horizontal projection and ROI detection with R-CNN, the latter being more promising than the first.
+
+#### Gaussian blur + finding contours
+This method applies a gaussian blur kernel on the image to make it easier to extract contours and then extract them. The contours being the text lines themselves.
+
+<div style="background-color: red">
+TO DO : add examples and elaborate
+</div>
+
+#### Horizontal projection
+<div style="background-color: red">
+blah blah blah
+</div>
+
+#### R-CNN and Regions of Interest
+<div style="background-color: red">
+blah blah blah
+</div>
+<br>
+### Text Recognition
+<div style="background-color: red">
+blah blah blah
+</div>
+
+<br/>
+
+## Client-Side
+<div style="background-color: red">
+blah blah blah
+</div>
