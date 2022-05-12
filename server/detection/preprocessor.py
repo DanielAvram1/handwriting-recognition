@@ -4,7 +4,7 @@ from typing import Tuple
 import cv2
 import numpy as np
 
-from detection.dataloader_iam import Batch
+from .dataloader_iam import Batch
 
 
 class Preprocessor:

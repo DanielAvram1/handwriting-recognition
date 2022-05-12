@@ -1,9 +1,9 @@
 opencv-python==4.5.5.64
 matplotlib==3.5.2
 scikit-learn==1.0.2
+scikit-image==0.19.2
 opencv-python==4.5.5.64
 path==16.4.0
 lmdb==1.0.0
 Flask==2.1.2
 jsonpickle==2.1.0
-tensorflow==2.8.0

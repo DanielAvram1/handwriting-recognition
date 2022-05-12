@@ -6,7 +6,7 @@ import numpy as np
 import cv2
 
 
-img = cv2.imread('./data/pages/test2.jpeg')
+img = cv2.imread('./data/lines/8.png')
 img = cv2.cvtColor(img, cv2.COLOR_BGR2GRAY)
 plt.figure(figsize=(10,10))
 plt.axis("off")
