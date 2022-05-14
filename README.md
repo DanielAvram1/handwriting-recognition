@@ -43,6 +43,7 @@ expo start
 cd ..
 ```
 <br>
+
 ## App flow
 ---
 <div>
