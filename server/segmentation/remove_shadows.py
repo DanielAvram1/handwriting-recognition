@@ -1,7 +1,7 @@
 
 import cv2
 import numpy as np
-from constants import SAMPLE_PATH
+from .constants import SAMPLE_PATH
 import os
 
 class ShadowRemover:

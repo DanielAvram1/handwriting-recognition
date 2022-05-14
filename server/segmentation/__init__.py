@@ -1,1 +1,1 @@
-from .word_segmentation import segment
+from .word_segmentation import Segmentator

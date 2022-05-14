@@ -2,8 +2,8 @@ import cv2
 import numpy as np
 from dataclasses import dataclass
 import os
-from constants import SAMPLE_PATH
-from remove_shadows import ShadowRemover
+from .constants import SAMPLE_PATH
+from .remove_shadows import ShadowRemover
 
 @dataclass
 class BBox:

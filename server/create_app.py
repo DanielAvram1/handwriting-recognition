@@ -3,8 +3,8 @@ import numpy as np
 import jsonpickle
 import cv2
 import base64
-from .detection import predict
-from .segmentation import segment
+from detection import predict
+from segmentation import Segmentator
 from flask import jsonify
 
 app = Flask(__name__)
@@ -24,7 +24,8 @@ def test():
   #   out.write(bytes_of_image)
   # return "Image read"
   image = cv2.imdecode(nparr, cv2.IMREAD_COLOR)
-  detections = segment(image)
+  segmentator = Segmentator()
+  detections = segmentator(image)
   detections.sort(key=lambda det: (det.bbox.y, det.bbox.x))
   
 
