@@ -93,6 +93,7 @@ blah blah blah
 blah blah blah
 </div>
 <br>
+
 ### Text Recognition
 For Text Recognition, I used a model formed from a CNN, RNN and CTC.
 
