@@ -145,3 +145,7 @@ Elaborate
 
 ## Client-Side
 A simple React Native app that sends an image to the server in base64 format, and the server responds with a processed image ( with readable text ) in base64 format and a string that represents the readable text. Then, it decodes the image and displays both the image and the text.
+
+## Targets
+* til next week introduction, practice and theorical concepts, related work, experiments and results
+* 

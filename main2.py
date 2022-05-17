@@ -2,13 +2,14 @@ import cv2
 import numpy as np
 from remove_shadow import remove_shadows
 from server.detection import predict
-from server.segmentation import segment
+from server.segmentation import Segmentator
 #import image
 image = cv2.imread('./data/pages/test6.jpeg')
-image = remove_shadows(image)
+
 cv2.imshow('orig',image)
 cv2.waitKey(0)
-detections = segment(image)
+segmentator = Segmentator(vocal=True, save_samples=True, hpp_dilation=True)
+detections = segmentator(image)
 image2 = image.copy()
 for i, det in enumerate(detections):
   roi = det.img

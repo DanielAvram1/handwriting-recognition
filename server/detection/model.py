@@ -27,7 +27,7 @@ class Model:
                  char_list: List[str],
                  decoder_type: str = DecoderType.BestPath,
                  must_restore: bool = False,
-                 dump: bool = False):# -> None:
+                 dump: bool = False) -> None:
         """Init model: add CNN, RNN and CTC and initialize TF."""
         self.dump = dump
         self.char_list = char_list
@@ -55,7 +55,7 @@ class Model:
         # initialize TF
         self.sess, self.saver = self.setup_tf()
 
-    def setup_cnn(self):# -> None:
+    def setup_cnn(self) -> None:
         """Create CNN layers."""
         cnn_in4d = tf.expand_dims(input=self.input_imgs, axis=3)
 
@@ -79,7 +79,7 @@ class Model:
 
         self.cnn_out_4d = pool
 
-    def setup_rnn(self):# -> None:
+    def setup_rnn(self) -> None:
         """Create RNN layers."""
         rnn_in3d = tf.squeeze(self.cnn_out_4d, axis=[2])
 
@@ -293,11 +293,8 @@ class Model:
             eval_list = self.loss_per_element
             feed_dict = {self.saved_ctc_input: ctc_input, self.gt_texts: sparse,
                          self.seq_len: [max_text_len] * num_batch_elements, self.is_train: False}
-            try:
-                loss_vals = self.sess.run(eval_list, feed_dict)
-                probs = np.exp(-loss_vals)
-            except:
-                pass
+            loss_vals = self.sess.run(eval_list, feed_dict)
+            probs = np.exp(-loss_vals)
 
         # dump the output of the NN to CSV file(s)
         if self.dump:

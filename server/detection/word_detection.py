@@ -57,6 +57,7 @@ def predict(img):
 
   batch = Batch([img], None, 1)
   recognized, probability = model.infer_batch(batch, True)
+  print(recognized)
   print(f'Recognized: "{recognized[0]}"')
   if probability:
     print(f'Probability: {probability[0]}')

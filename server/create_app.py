@@ -3,8 +3,8 @@ import numpy as np
 import jsonpickle
 import cv2
 import base64
-from detection import predict
-from segmentation import Segmentator
+from server.detection import predict
+from server.segmentation import Segmentator
 from flask import jsonify
 
 app = Flask(__name__)
